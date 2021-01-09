@@ -52,7 +52,7 @@ Run
 ```
 python main.py --dataset cpv2 --mode q_v_debias --debias CCB_loss --topq 1 --topv -1 --qvp 0 --output [] --seed 0
 ```
-to train our model with [Counterfactual Samples Synthesizing] (https://arxiv.org/pdf/2003.06576.pdf)
+to train our model with [Counterfactual Samples Synthesizing](https://arxiv.org/pdf/2003.06576.pdf).
 
 
 ### Testing
