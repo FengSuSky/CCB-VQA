@@ -1,3 +1,9 @@
+
+
+
+
+
+
 # Learning Content and Context with Language Bias for VQA
 
 This repo contains code for our paper ["Learning Content and Context with Language Bias for Visual Question Answering"](https://arxiv.org/pdf/2012.11134.pdf)
@@ -50,7 +56,7 @@ The easiest way to download the data is to run the provided script `tools/downlo
 Run
 
 ```
-CUDA_VISIBLE_DEVICES=0 python main.py --dataset cpv2 --mode q_v_debias --debias learned_mixin --topq 1 --topv -1 --qvp 5 --output [] --seed 0
+CUDA_VISIBLE_DEVICES=0 python main.py --dataset cpv2 --mode updn --debias CCB_loss  --output [] --seed 0
 ```
 
 to train a model
@@ -59,12 +65,22 @@ Run `python main.py --output_dir /path/to/output --seed 0` to start training our
 
 
 
+```
+CUDA_VISIBLE_DEVICES=0 python main.py --dataset cpv2 --mode q_v_debias --debias CCB_loss --topq 1 --topv -1 --qvp 0 --output [] --seed 0
+```
+
+
+
+
+
+
+
 ### Testing
 
 Run
 
 ```
-CUDA_VISIBLE_DEVICES=0 python eval.py --dataset cpv2 --debias learned_mixin --model_state []
+CUDA_VISIBLE_DEVICES=0 python eval.py --dataset cpv2 --debias CCB_loss --model_state []
 ```
 
 to eval a model
@@ -106,5 +122,3 @@ If you find this code useful, please cite the following paper:
   ```
 
 
-
-### 
