@@ -1,6 +1,6 @@
 # Learning Content and Context with Language Bias for VQA
 
-This repo contains code to run the VQA-CP and VQA v2 experiments from our paper ["Learning Content and Context with Language Bias for Visual Question Answering"](https://arxiv.org/pdf/2012.11134.pdf)In particular, it contains code to train a VQA model so that it can utilize question-type priors to learn content and context for answering questions.
+This repo contains code to run the VQA-CP and VQA v2 experiments from our paper ["Learning Content and Context with Language Bias for Visual Question Answering"](https://arxiv.org/pdf/2012.11134.pdf). In particular, it contains code to train a VQA model so that it can utilize question-type priors to learn content and context for answering questions.
 
 This repo contains code modified from [here](https://github.com/yanxinzju/CSS-VQA),many thanks!
 
@@ -21,9 +21,7 @@ You can use
 bash tools/download.sh
 ```
 
-to download the data <br>
-and the rest of the data can be obtained from [BaiduYun](https://pan.baidu.com/s/1oHdwYDSJXC1mlmvu8cQhKw)(passwd:3jot) or [GoogleDrive](https://drive.google.com/drive/folders/13e-b76otJukupbjfC-n1s05L202PaFKQ?usp=sharing)
-unzip feature1.zip and feature2.zip and merge them into data/rcnn_feature/ <br> (model.pth is the trained model from [CSS-VQA](https://github.com/yanxinzju/CSS-VQA))
+to download the data <br> and the rest of the data can be obtained from [BaiduYun](https://pan.baidu.com/s/1oHdwYDSJXC1mlmvu8cQhKw)(passwd:3jot) or [GoogleDrive](https://drive.google.com/drive/folders/13e-b76otJukupbjfC-n1s05L202PaFKQ?usp=sharing) unzip feature1.zip and feature2.zip and merge them into data/rcnn_feature/ <br> (model.pth is the trained model from [CSS-VQA](https://github.com/yanxinzju/CSS-VQA))
 
 Our trained models can be obtained from [BaiduYun](https://pan.baidu.com/s/1jdIh5hNqhe_InfufJu79qg)(passwd:muma) 
 
