@@ -28,7 +28,7 @@ def parse_args():
         help="Cache image features in RAM. Makes things much faster, "
              "especially if the filesystem is slow, but requires at least 48gb of RAM")
     parser.add_argument(
-        '--dataset', default='v2',
+        '--dataset', default='cpv2',
         choices=["v2", "cpv2", "cpv1"],
         help="Run on VQA-2.0 instead of VQA-CP 2.0"
     )
@@ -36,7 +36,7 @@ def parse_args():
         '-p', "--entropy_penalty", default=0.42, type=float,
         help="Entropy regularizer weight for the learned_mixin model")
     parser.add_argument(
-        '--mode', default="q_v_debias",
+        '--mode', default="updn",
         choices=["updn", "q_debias","v_debias","q_v_debias"],
         help="Kind of ensemble loss to use")
     parser.add_argument(
@@ -59,7 +59,7 @@ def parse_args():
         choices=[9,18,27,36],
         help="num of hint")
     parser.add_argument(
-        '--qvp', type=int,default=5,
+        '--qvp', type=int,default=0,
         choices=[0,1,2,3,4,5,6,7,8,9,10],
         help="ratio of q_bias and v_bias")
     parser.add_argument(
@@ -71,7 +71,7 @@ def parse_args():
     parser.add_argument('--epochs', type=int, default=100)
     parser.add_argument('--num_hid', type=int, default=1024)
     parser.add_argument('--model', type=str, default='CCB_model',choices=["baseline0_newatt", "CCB_model"])
-    parser.add_argument('--output', type=str, default='logs/exp_cc_best_v2')
+    parser.add_argument('--output', type=str, default='logs/demo')
     parser.add_argument('--batch_size', type=int, default=512)
     parser.add_argument('--seed', type=int, default=0, help='random seed')
     args = parser.parse_args()
@@ -144,7 +144,7 @@ def main():
 
     # Build the model using the original constructor
     constructor = 'build_%s' % args.model
-    model = getattr(CCB_model, constructor)(train_dset, args.num_hid).cuda()
+    model = getattr(CCB_model, constructor)(train_dset, args.num_hid).cuda()  #or base_model
     if dataset=='cpv1':
         model.w_emb.init_embedding('data/glove6b_init_300d_v1.npy')
     elif dataset=='cpv2' or dataset=='v2':
