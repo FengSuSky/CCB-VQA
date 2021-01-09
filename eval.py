@@ -48,13 +48,13 @@ def parse_args():
         choices=["updn", "q_debias", "v_debias", "q_v_debias"],
         help="Kind of ensemble loss to use")
     parser.add_argument(
-        '--debias', default="learned_mixin",
-        choices=["learned_mixin", "reweight", "bias_product", "none","CC_loss"],
+        '--debias', default="CCB_loss",
+        choices=["learned_mixin", "reweight", "bias_product", "none","CCB_loss"],
         help="Kind of ensemble loss to use")
     # Arguments from the original model, we leave this default, except we
     # set --epochs to 15 since the model maxes out its performance on VQA 2.0 well before then
     parser.add_argument('--num_hid', type=int, default=1024)
-    parser.add_argument('--model', type=str, default='baseline0_newatt',choices=["baseline0_newatt", "CCB_model"])
+    parser.add_argument('--model', type=str, default='CCB_model',choices=["baseline0_newatt", "CCB_model"])
     parser.add_argument('--batch_size', type=int, default=512)
     parser.add_argument('--seed', type=int, default=1111, help='random seed')
     parser.add_argument('--model_state', type=str, default='logs/model.pth')
@@ -187,7 +187,8 @@ def main():
 
     # Build the model using the original constructor
     constructor = 'build_%s' % args.model
-    model = getattr(base_model, constructor)(eval_dset, args.num_hid).cuda()
+    model = getattr(CCB_model, constructor)(eval_dset, args.num_hid).cuda()
+    #model = getattr(base_model, constructor)(eval_dset, args.num_hid).cuda()
 
     if args.debias == "bias_product":
         model.debias_loss_fn = BiasProduct()
